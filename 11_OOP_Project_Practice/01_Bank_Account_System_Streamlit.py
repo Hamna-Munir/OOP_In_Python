@@ -1,7 +1,7 @@
 import streamlit as st
 
 # ---------------------------
-# 🎯 Page Configuration
+#  Page Configuration
 # ---------------------------
 st.set_page_config(
     page_title="Bank Account System | Hamna Munir",
@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 # ---------------------------
-# 🌟 Header Section
+#  Header Section
 # ---------------------------
 st.title("💳 Bank Account Management System")
 st.markdown("""
@@ -59,7 +59,7 @@ class BankAccount:
 
 
 # ---------------------------
-# 🧭 Sidebar Navigation
+#  Sidebar Navigation
 # ---------------------------
 st.sidebar.title("🏦 Bank Menu")
 menu = st.sidebar.radio("Choose an Option:", ["Create Account", "Deposit", "Withdraw", "View Details", "About Developer"])
@@ -69,7 +69,7 @@ if 'account' not in st.session_state:
     st.session_state.account = None
 
 # ---------------------------
-# 🧾 Functional Sections
+#  Functional Sections
 # ---------------------------
 if menu == "Create Account":
     st.header("🧍 Create New Account")
@@ -116,8 +116,9 @@ elif menu == "About Developer":
     st.info("This Streamlit app demonstrates the power of Object-Oriented Programming (OOP) in an interactive way.")
 
 # ---------------------------
-# 🌈 Footer
+#  Footer
 # ---------------------------
 st.markdown("---")
 st.caption("© 2025 | Built with ❤️ by Hamna Munir | Powered by Streamlit")
+
 
