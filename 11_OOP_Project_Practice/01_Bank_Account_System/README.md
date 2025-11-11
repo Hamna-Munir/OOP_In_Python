@@ -90,7 +90,7 @@ http://localhost:8501/
 **Hamna Munir**  
 💡 *Python | Streamlit | OOP | Machine Learning Enthusiast*  
 🔗 [GitHub Profile](https://github.com/Hamna-Munir)  
-📧 hamnamunir@example.com  
+📧 hamnamunir27@gmail.com  
 
 ---
 
