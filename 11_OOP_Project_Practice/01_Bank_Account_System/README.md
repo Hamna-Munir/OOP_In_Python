@@ -69,7 +69,7 @@ streamlit run 01_Bank_Account_System_Streamlit.py
 ```
 
 ### 5️⃣ Open in Browser
-Once executed, Streamlit will display a local URL such as:
+After running the command, Streamlit will open the app in your default web browser at a local address such as: 
 ```
 http://localhost:8501/
 ```
