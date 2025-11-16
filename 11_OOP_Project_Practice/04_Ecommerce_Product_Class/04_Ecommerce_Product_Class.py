@@ -137,19 +137,36 @@ if menu == "Add Product":
 
 
 # --------------------------- VIEW PRODUCTS ---------------------------
-elif choice == "View Products":
+elif menu == "View Products":
     st.header("📦 All Products")
-    products = db.get_all_products()
+
+    products = get_all_products()
 
     if products:
+        import pandas as pd
+
+        # convert list of tuples to DataFrame
         df = pd.DataFrame(products, columns=["ID", "Name", "Category", "Price", "Stock"])
 
-        # Format price (remove decimals + add commas)
-        df["Price"] = df["Price"].apply(lambda x: f"{int(x):,}")
+        # format price:
+        # - if value is an integer-like float -> show as "50,000"
+        # - otherwise show with two decimals and commas -> "1,234.56"
+        def format_price(x):
+            try:
+                val = float(x)
+                if val.is_integer():
+                    return f"{int(val):,}"
+                return f"{val:,.2f}"
+            except Exception:
+                return x  # leave as-is if formatting fails
 
+        df["Price"] = df["Price"].apply(format_price)
+
+        # display the table
         st.table(df)
     else:
         st.info("No products available.")
+
 
 # --------------------------- SEARCH PRODUCT ---------------------------
 elif menu == "Search Product":
@@ -214,4 +231,5 @@ elif menu == "Delete Product":
             st.error("Product deleted!")
     else:
         st.info("No products available.")
+
 
