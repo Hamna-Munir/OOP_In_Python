@@ -137,24 +137,19 @@ if menu == "Add Product":
 
 
 # --------------------------- VIEW PRODUCTS ---------------------------
-elif menu == "View Products":
+elif choice == "View Products":
     st.header("📦 All Products")
-
-    products = get_all_products()
+    products = db.get_all_products()
 
     if products:
-        st.table(
-            {
-                "ID": [p[0] for p in products],
-                "Name": [p[1] for p in products],
-                "Category": [p[2] for p in products],
-                "Price": [p[3] for p in products],
-                "Stock": [p[4] for p in products],
-            }
-        )
+        df = pd.DataFrame(products, columns=["ID", "Name", "Category", "Price", "Stock"])
+
+        # Format price (remove decimals + add commas)
+        df["Price"] = df["Price"].apply(lambda x: f"{int(x):,}")
+
+        st.table(df)
     else:
         st.info("No products available.")
-
 
 # --------------------------- SEARCH PRODUCT ---------------------------
 elif menu == "Search Product":
@@ -219,3 +214,4 @@ elif menu == "Delete Product":
             st.error("Product deleted!")
     else:
         st.info("No products available.")
+
